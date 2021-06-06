@@ -29,3 +29,13 @@ bootstrap();
 //   await app.listen(3000);
 // }
 // bootstrap();
+
+// using tcp
+// const app = await NestFactory.createMicroservice(AppModule, {
+//   transport: Transport.TCP,
+//   options: {
+//     host: '127.0.0.1',
+//     port: 8877,
+//   },
+// });
+// app.listen(() => console.log('Microservice is listening on port 8877'));
