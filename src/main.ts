@@ -5,10 +5,15 @@ import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.createMicroservice(AppModule, {
-    transport: Transport.TCP,
+    transport: Transport.RMQ,
     options: {
-      host: '127.0.0.1',
-      port: 8877,
+      urls: [
+        'amqps://ykihgmxy:bHDLrFmm59AVzPvKV_gjhC2t9LrTDcTd@gerbil.rmq.cloudamqp.com/ykihgmxy',
+      ],
+      queue: 'main_queue',
+      queueOptions: {
+        durable: false,
+      },
     },
   });
   app.listen(() => console.log('Microservice is listening on port 8877'));
