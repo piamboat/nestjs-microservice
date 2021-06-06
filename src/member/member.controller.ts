@@ -3,7 +3,7 @@ import { MemberService } from './member.service';
 import { CreateMemberDto } from './dto/create-member-dto';
 import { Member } from './member.entity';
 import { GetMemberDto } from './dto/get-member-dto';
-import { MessagePattern } from '@nestjs/microservices';
+import { EventPattern, MessagePattern } from '@nestjs/microservices';
 
 @Controller('members')
 export class MemberController {
@@ -17,5 +17,10 @@ export class MemberController {
   @MessagePattern('get-members')
   getMembers(getMemberDto: GetMemberDto): Promise<Member[]> {
     return this.memberService.getMembers(getMemberDto);
+  }
+
+  @EventPattern('hello')
+  sayHello(data: string) {
+    return this.memberService.sayHello(data);
   }
 }

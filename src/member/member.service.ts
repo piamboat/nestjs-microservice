@@ -19,4 +19,8 @@ export class MemberService {
   async getMembers(getMemberDto: GetMemberDto): Promise<Member[]> {
     return this.memberRepository.getMembers(getMemberDto);
   }
+
+  async sayHello(data: string): Promise<void> {
+    console.log(data);
+  }
 }
